@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Enquiry & Booking | Blade & Timber Co.</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="site-header">
+    <div class="brand-container">
+      <div class="logo-icon">✦</div>
+      <div class="brand-text">
+        <h1>BLADE & TIMBER</h1>
+        <span>CO. — JOHANNESBURG</span>
+      </div>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="enquiry.html" class="active">Enquiry</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="enquiry.html" class="btn-book">Book Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="form-section">
+      <div class="subtitle-container">
+        <div class="subtitle-line"></div>
+        <span class="subtitle-text">Appointments & Support</span>
+      </div>
+
+      <h1 class="section-title">Service Enquiry</h1>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">Fill out the form below to submit a custom booking request or general inquiry.</p>
+
+      <form id="enquiryForm" class="enquiry-form" novalidate>
+        
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullName">Full Name *</label>
+          <input type="text" id="fullName" placeholder="e.g. Yamkelo Vilakazi">
+          <small class="error-msg" id="nameError"></small>
+        </div>
+
+        <!-- Contact Email & Phone -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="name@example.com">
+            <small class="error-msg" id="emailError"></small>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" placeholder="082 123 4567">
+            <small class="error-msg" id="phoneError"></small>
+          </div>
+        </div>
+
+        <!-- Preferred Branch & Service -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="branch">Select Branch *</label>
+            <select id="branch">
+              <option value="">-- Choose Branch --</option>
+              <option value="rosebank">Rosebank Precinct</option>
+              <option value="braamfontein">Braamfontein Precinct</option>
+            </select>
+            <small class="error-msg" id="branchError"></small>
+          </div>
+          <div class="form-group">
+            <label for="service">Desired Service *</label>
+            <select id="service">
+              <option value="">-- Select Package --</option>
+              <option value="haircut">Haircut & Styling (R220)</option>
+              <option value="beard">Beard Trim & Sculpt (R150)</option>
+              <option value="shave">Hot Towel Shave (R180)</option>
+              <option value="executive">The Full Executive (R340)</option>
+            </select>
+            <small class="error-msg" id="serviceError"></small>
+          </div>
+        </div>
+
+        <!-- Additional Notes / Message -->
+        <div class="form-group">
+          <label for="message">Additional Notes or Preferred Date</label>
+          <textarea id="message" rows="4" placeholder="Let us know your preferred date/time or specific grooming requests..."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-book" style="width: 100%; text-align: center; margin-top: 1rem;">Submit Enquiry</button>
+
+        <!-- Feedback Alert Box -->
+        <div id="formSuccess" class="success-alert" style="display: none;">
+          ✓ Thank you! Your enquiry has been sent successfully. We will get back to you shortly.
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
