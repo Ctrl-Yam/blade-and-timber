@@ -68,12 +68,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
-  background-image: 
-    radial-gradient(circle at 15% 20%, rgba(201, 155, 59, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 85% 80%, rgba(42, 32, 25, 0.35) 0%, transparent 50%),
-    linear-gradient(180deg, #0f1013 0%, #121419 100%);
-  background-attachment: fixed;
+  background: transparent;
   color: var(--text-secondary);
   line-height: 1.7;
   min-height: 100vh;
