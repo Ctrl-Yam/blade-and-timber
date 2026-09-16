@@ -29,7 +29,8 @@
 }
 
 html {
-  font-size: 100%; /* 16px default browser baseline */
+  font-size: 100%;
+  /* 16px default browser baseline */
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -97,20 +98,30 @@ ol {
    -------------------------------------------------------------------------- */
 :root {
   /* --- Dark-Themed Color Palette --- */
-  --color-bg-primary: #0c0e12;        /* Obsidian Base */
-  --color-bg-secondary: #14171f;      /* Slate Charcoal */
-  --color-bg-card: #1a1e27;           /* Elevated Card Surface */
-  --color-bg-card-hover: #222733;     /* Hover Surface */
-  --color-bg-elevated: #282d3b;       /* Modal / Highlight Layer */
-  --color-bg-input: #12141a;          /* Form Input Surface */
+  --color-bg-primary: #0c0e12;
+  /* Obsidian Base */
+  --color-bg-secondary: #14171f;
+  /* Slate Charcoal */
+  --color-bg-card: #1a1e27;
+  /* Elevated Card Surface */
+  --color-bg-card-hover: #222733;
+  /* Hover Surface */
+  --color-bg-elevated: #282d3b;
+  /* Modal / Highlight Layer */
+  --color-bg-input: #12141a;
+  /* Form Input Surface */
 
   /* --- Brand Gold & Timber Accents --- */
-  --color-gold-primary: #c99b3b;      /* Warm Architectural Gold */
-  --color-gold-light: #e6bf65;        /* Light Gold for text/hover */
-  --color-gold-dark: #9e7520;         /* Deep Gold border accent */
+  --color-gold-primary: #c99b3b;
+  /* Warm Architectural Gold */
+  --color-gold-light: #e6bf65;
+  /* Light Gold for text/hover */
+  --color-gold-dark: #9e7520;
+  /* Deep Gold border accent */
   --color-gold-gradient: linear-gradient(135deg, #c99b3b 0%, #f0cd7d 50%, #a87d27 100%);
   --color-gold-glow: rgba(201, 155, 59, 0.25);
-  --color-timber-warm: #2a2019;       /* Deep Timber Wood Undertone */
+  --color-timber-warm: #2a2019;
+  /* Deep Timber Wood Undertone */
 
   /* --- Borders & Dividers --- */
   --color-border-subtle: rgba(255, 255, 255, 0.08);
@@ -118,10 +129,14 @@ ol {
   --color-border-focus: #c99b3b;
 
   /* --- Typography Colors --- */
-  --color-text-primary: #f8fafc;      /* Crisp Off-White */
-  --color-text-secondary: #cbd5e1;    /* Slate Gray readable */
-  --color-text-muted: #94a3b8;        /* Subdued Secondary text */
-  --color-text-dim: #64748b;          /* Darker slate details */
+  --color-text-primary: #f8fafc;
+  /* Crisp Off-White */
+  --color-text-secondary: #cbd5e1;
+  /* Slate Gray readable */
+  --color-text-muted: #94a3b8;
+  /* Subdued Secondary text */
+  --color-text-dim: #64748b;
+  /* Darker slate details */
 
   /* --- State & Feedback Colors --- */
   --color-error: #f87171;
@@ -134,15 +149,24 @@ ol {
   --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --text-xs: 0.75rem;    /* 12px */
-  --text-sm: 0.875rem;   /* 14px */
-  --text-base: 1rem;     /* 16px */
-  --text-md: 1.125rem;   /* 18px */
-  --text-lg: 1.25rem;    /* 20px */
-  --text-xl: 1.5rem;     /* 24px */
-  --text-2xl: 1.875rem;  /* 30px */
-  --text-3xl: 2.25rem;   /* 36px */
-  --text-4xl: 2.75rem;   /* 44px */
+  --text-xs: 0.75rem;
+  /* 12px */
+  --text-sm: 0.875rem;
+  /* 14px */
+  --text-base: 1rem;
+  /* 16px */
+  --text-md: 1.125rem;
+  /* 18px */
+  --text-lg: 1.25rem;
+  /* 20px */
+  --text-xl: 1.5rem;
+  /* 24px */
+  --text-2xl: 1.875rem;
+  /* 30px */
+  --text-3xl: 2.25rem;
+  /* 36px */
+  --text-4xl: 2.75rem;
+  /* 44px */
   --text-hero: clamp(2.4rem, 5vw + 1rem, 4.2rem);
 
   --leading-tight: 1.2;
@@ -150,22 +174,36 @@ ol {
   --leading-relaxed: 1.75;
 
   /* --- Spacing Scale (rem) --- */
-  --space-1: 0.25rem;    /* 4px */
-  --space-2: 0.5rem;     /* 8px */
-  --space-3: 0.75rem;    /* 12px */
-  --space-4: 1rem;       /* 16px */
-  --space-5: 1.25rem;    /* 20px */
-  --space-6: 1.5rem;     /* 24px */
-  --space-8: 2rem;       /* 32px */
-  --space-10: 2.5rem;    /* 40px */
-  --space-12: 3rem;      /* 48px */
-  --space-16: 4rem;      /* 64px */
+  --space-1: 0.25rem;
+  /* 4px */
+  --space-2: 0.5rem;
+  /* 8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.25rem;
+  /* 20px */
+  --space-6: 1.5rem;
+  /* 24px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px */
+  --space-16: 4rem;
+  /* 64px */
 
   /* --- Component Dimensions & Transitions --- */
-  --max-width: 75rem;    /* 1200px container width */
-  --radius-sm: 0.375rem; /* 6px */
-  --radius-md: 0.625rem; /* 10px */
-  --radius-lg: 1rem;     /* 16px */
+  --max-width: 75rem;
+  /* 1200px container width */
+  --radius-sm: 0.375rem;
+  /* 6px */
+  --radius-md: 0.625rem;
+  /* 10px */
+  --radius-lg: 1rem;
+  /* 16px */
   --radius-full: 9999px;
 
   --transition-fast: 0.2s ease;
@@ -183,7 +221,12 @@ ol {
 /* --------------------------------------------------------------------------
    3. TYPOGRAPHY & BASE ELEMENTS
    -------------------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--color-text-primary);
   line-height: var(--leading-tight);
@@ -191,10 +234,25 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-h1 { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
-h2 { font-size: var(--text-2xl); margin-bottom: var(--space-3); }
-h3 { font-size: var(--text-xl); margin-bottom: var(--space-2); }
-h4 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
+h1 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-4);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-3);
+}
+
+h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+}
+
+h4 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
 
 p {
   margin-bottom: var(--space-4);
@@ -405,10 +463,10 @@ nav {
   border: 0.0625rem solid transparent;
   cursor: pointer;
   box-shadow: 0 0.25rem 0.9375rem rgba(201, 155, 59, 0.25);
-  transition: transform var(--transition-fast), 
-              box-shadow var(--transition-fast), 
-              filter var(--transition-fast),
-              background var(--transition-fast);
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-fast),
+    background var(--transition-fast);
   text-align: center;
   outline: none;
 }
@@ -541,10 +599,10 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform var(--transition-normal), 
-              box-shadow var(--transition-normal), 
-              border-color var(--transition-normal),
-              background-color var(--transition-normal);
+  transition: transform var(--transition-normal),
+    box-shadow var(--transition-normal),
+    border-color var(--transition-normal),
+    background-color var(--transition-normal);
   position: relative;
   overflow: hidden;
 }
@@ -690,9 +748,9 @@ main {
   font-size: var(--text-base);
   padding: 0.85rem 1.1rem;
   outline: none;
-  transition: border-color var(--transition-fast), 
-              box-shadow var(--transition-fast), 
-              background-color var(--transition-fast);
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 /* Pseudo-classes for Form Inputs */
@@ -1030,7 +1088,8 @@ main {
 /* --- TABLET BREAKPOINT (max-width: 992px) --- */
 @media screen and (max-width: 992px) {
   html {
-    font-size: 93.75%; /* Scales 1rem down to 15px */
+    font-size: 93.75%;
+    /* Scales 1rem down to 15px */
   }
 
   main {
@@ -1073,7 +1132,8 @@ main {
 /* --- MOBILE BREAKPOINT (max-width: 640px) --- */
 @media screen and (max-width: 640px) {
   html {
-    font-size: 87.5%; /* Scales 1rem down to 14px */
+    font-size: 87.5%;
+    /* Scales 1rem down to 14px */
   }
 
   main {
@@ -1182,6 +1242,7 @@ main {
    15. ACCESSIBILITY: HIGH CONTRAST & REDUCED MOTION
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
