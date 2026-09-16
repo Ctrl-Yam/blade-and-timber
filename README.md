@@ -110,7 +110,7 @@ Below is visual evidence of cross-device testing conducted across Desktop, Table
 
 ---
 
-## References (IIE Harvard Style)
+## References
 
 - Google Fonts. 2026. *Open Sans Font Family*. [Online] Available at: <https://fonts.google.com/specimen/Open+Sans> [Accessed 16 September 2026].
 - Google Fonts. 2026. *Poppins Font Family*. [Online] Available at: <https://fonts.google.com/specimen/Poppins> [Accessed 16 September 2026].
