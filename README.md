@@ -76,63 +76,37 @@ Blade & Timber Co.
 
 ---
 
-## Responsive Device Testing & Screenshot Evidence
+## Responsive Design Evidence
 
-The website was rigorously tested using Google Chrome DevTools Device Emulation and physical hardware across three standard viewport categories: Desktop, Tablet, and Mobile.
+Below is visual evidence of cross-device testing conducted across Desktop, Tablet, and Mobile viewport breakpoints using browser extension captures:
 
-| Viewport Category | Emulated Device / Resolution | Aspect Ratio | Layout Behavior Observed | Test Result |
-| :--- | :--- | :--- | :--- | :--- |
-| **Desktop** | Wide Display / MacBook Pro (1440 × 900 px) | 16:10 | Full 3-column grid for services, horizontal navbar, 3-column footer | **PASS** |
-| **Tablet** | Apple iPad 10th Gen / Air (820 × 1180 px) | 4:3 | Fluid 2-column services grid, wrapped nav links, adjusted card padding | **PASS** |
-| **Mobile** | Apple iPhone 14 Pro / Samsung S22 (393 × 852 px) | 19.5:9 | Clean 1-column stacked layout, full-width inputs, stacked mobile nav | **PASS** |
-
-### Screenshot Evidence Gallery
-
-#### 1. Desktop Layout (1440px Viewport)
-> *Demonstrating the full 3-column service grid, sticky horizontal navigation, and multi-column footer.*
-
-![Desktop Test Evidence](assets/images/testing-desktop.png)
-*(Image placeholder: Insert actual screenshot of desktop view from browser here)*
+### Desktop View
+![Desktop View](assets/screenshots/desktop.png)
 
 ---
 
-#### 2. Tablet Layout (768px – 820px Viewport)
-> *Demonstrating the fluid 2-column service card rearrangement, adjusted typography scale, and responsive padding.*
-
-![Tablet Test Evidence](assets/images/testing-tablet.png)
-*(Image placeholder: Insert actual screenshot of tablet view from browser here)*
+### Tablet View
+![Tablet View](assets/screenshots/tablet.png)
 
 ---
 
-#### 3. Mobile Device Layout (375px – 430px Viewport)
-> *Demonstrating the clean single-column stacked layout, touch-friendly button sizes, and stacked enquiry form fields.*
-
-![Mobile Test Evidence](assets/images/testing-mobile.png)
-*(Image placeholder: Insert actual screenshot of mobile view from browser here)*
+### Mobile View
+![Mobile View](assets/screenshots/mobile.png)
 
 ---
 
-## Detailed Project Changelog
+## Changelog
 
-### Edits Made from Part 1 Feedback
-| Area / Component | Identified Issue from Part 1 | Remedial Action Taken | Verification Status |
-| :--- | :--- | :--- | :--- |
-| **Image Assets & Media** | Missing visual imagery and missing alternative (`alt`) descriptions on media elements. | Added high-resolution barber and tool photography; implemented comprehensive, descriptive `alt` attributes for screen readers. | **Resolved** |
-| **Semantic HTML5 Tags** | Overuse of generic `<div>` tags; non-standard heading hierarchies across secondary pages. | Re-architected all 5 pages using HTML5 landmark elements (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`). Standardised to exactly one `<h1>` per page. | **Resolved** |
-| **Source Code Documentation** | Insufficient code commentary explaining layout choices and tag functions. | Added clear, professional developer comments throughout HTML and CSS files delineating components, grid setups, and media query limits. | **Resolved** |
-| **Form Accessibility** | Form `<label>` tags lacked explicit programmatic association with inputs. | Explicitly bound all `<label for="...">` tags to corresponding `<input id="...">` attributes and added input types (`email`, `tel`). | **Resolved** |
+### Part 1 - HTML Skeleton & Structure
+- Built semantic HTML5 structure across all 5 pages (`index.html`, `about.html`, `services.html`, `enquiry.html`, `contact.html`).
+- Set up project repository and initial GitHub Pages deployment.
+- Formatted accessibility tags, headings hierarchy, and navigation links.
 
----
-
-### Part 2 New Features & Additions
-- **[Feature] Unified External Stylesheet:** Created clean, modular `style.css` (and synced with `css/styles.css`) containing all reset, variables, component styles, and breakpoints.
-- **[Feature] Custom Property Token Architecture:** Implemented 20+ CSS variables covering dark obsidian surfaces, gold gradients, shadows, and relative spacing units.
-- **[Feature] Typography Scale (Relative Units):** Integrated Google Fonts **'Poppins'** (headings) and **'Open Sans'** (body), scaling entirely with `rem` and `em` units.
-- **[Feature] CSS Grid Multi-Column Desktop Layouts:** Built responsive multi-column layouts for service cards (3 columns), branch locations (2 columns), and footer (3 columns).
-- **[Feature] Flexbox Micro-Layouts:** Used Flexbox for header brand alignment, horizontal navigation bar, card header prices, and duration badges.
-- **[Feature] Interactive Pseudo-Classes:** Added custom styles for `:hover`, `:focus`, `:focus-visible`, and `:active` across buttons, navigation links, and inputs to exceed accessibility guidelines.
-- **[Feature] Comprehensive Media Queries:** Configured responsive breakpoints at `992px` (Tablet), `640px` (Mobile), and `400px` (Small Mobile), guaranteeing seamless single-column collapse.
-- **[Feature] Responsive Images Implementation:** Designed `<picture>` markup patterns utilising `srcset` and `sizes` to deliver optimal image resolutions across viewports.
+### Part 2 - CSS & Responsive Design
+- Linked external CSS stylesheet (`css/styles.css` / `style.css`) across all HTML files for unified site styling.
+- Implemented CSS Flexbox and Grid multi-column desktop layouts for navigation menu, service cards, and footer.
+- Added media queries for mobile and tablet breakpoints to collapse multi-column layouts into a responsive single-column format.
+- Uploaded cross-device testing screenshots to the documentation under `assets/screenshots/` verifying Desktop, Tablet, and Mobile compatibility.
 
 ---
 
