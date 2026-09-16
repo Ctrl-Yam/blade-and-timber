@@ -81,17 +81,17 @@ Blade & Timber Co.
 Below is visual evidence of cross-device testing conducted across Desktop, Tablet, and Mobile viewport breakpoints using browser extension captures:
 
 ### Desktop View
-![Desktop View](assets/screenshots/desktop.png)
+![Desktop View](assets/images/desktop.png)
 
 ---
 
 ### Tablet View
-![Tablet View](assets/screenshots/tablet.png)
+![Tablet View](assets/images/tablet.png)
 
 ---
 
 ### Mobile View
-![Mobile View](assets/screenshots/mobile.png)
+![Mobile View](assets/images/mobile.png)
 
 ---
 
