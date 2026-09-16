@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blade & Timber Co. — Johannesburg</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
   <!-- Header / Navbar -->
@@ -49,6 +51,62 @@
         Walk in, sit down, and let our master barbers take over.
       </p>
     </section>
+
+    <!-- Featured Cuts & Styles Gallery Section -->
+    <section class="home-gallery-section" style="padding: 4rem 5%; max-width: 1200px; margin: 0 auto;">
+      <div class="subtitle-container" style="margin-bottom: 1rem;">
+        <div class="subtitle-line"></div>
+        <span class="subtitle-text">The Craft</span>
+      </div>
+      <h2 style="font-size: 2.25rem; color: var(--text-main, #fff); margin-bottom: 2rem;">Featured Cuts & Styling</h2>
+
+      <div class="home-gallery-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+
+        <!-- Image 1 -->
+        <div class="gallery-card"
+          style="background: var(--card-bg, #1a1e27); border-radius: 0.5rem; overflow: hidden; border: 1px solid rgba(201, 155, 59, 0.2);">
+          <div style="height: 240px; overflow: hidden;">
+            <img src="assets/images/1.jpg" alt="Precision haircut and style"
+              style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+          </div>
+          <div style="padding: 1.5rem;">
+            <h3 style="color: #c99b3b; font-size: 1.25rem; margin-bottom: 0.5rem;">Precision Fades</h3>
+            <p style="color: var(--text-muted, #a0aec0); font-size: 0.95rem;">Clean skin fades paired with expert
+              scissor texturing.</p>
+          </div>
+        </div>
+
+        <!-- Image 2: Barber Image -->
+        <div class="gallery-card"
+          style="background: var(--card-bg, #1a1e27); border-radius: 0.5rem; overflow: hidden; border: 1px solid rgba(201, 155, 59, 0.2);">
+          <div style="height: 240px; overflow: hidden;">
+            <img src="assets/images/barber image.jpg" alt="Master barber at work"
+              style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+          </div>
+          <div style="padding: 1.5rem;">
+            <h3 style="color: #c99b3b; font-size: 1.25rem; margin-bottom: 0.5rem;">Master Craftsmanship</h3>
+            <p style="color: var(--text-muted, #a0aec0); font-size: 0.95rem;">Detailed razor work and traditional hot
+              towel treatments.</p>
+          </div>
+        </div>
+
+        <!-- Image 3: Hair Dresser -->
+        <div class="gallery-card"
+          style="background: var(--card-bg, #1a1e27); border-radius: 0.5rem; overflow: hidden; border: 1px solid rgba(201, 155, 59, 0.2);">
+          <div style="height: 240px; overflow: hidden;">
+            <img src="assets/images/hair dresser.jpg" alt="Professional styling session"
+              style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+          </div>
+          <div style="padding: 1.5rem;">
+            <h3 style="color: #c99b3b; font-size: 1.25rem; margin-bottom: 0.5rem;">Executive Styling</h3>
+            <p style="color: var(--text-muted, #a0aec0); font-size: 0.95rem;">Tailored grooming solutions finished with
+              premium products.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -59,4 +117,5 @@
     </div>
   </footer>
 </body>
+
 </html>
