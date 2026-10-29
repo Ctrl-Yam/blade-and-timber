@@ -1,0 +1,10 @@
+# ==========================================================================
+# Blade & Timber Co. — robots.txt
+# Guides web crawlers on which pages to index
+# ==========================================================================
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://bladeandtimber.co.za/sitemap.xml
