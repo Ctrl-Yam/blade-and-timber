@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services & Pricing | Blade & Timber Co.</title>
+  <title>Services & Pricing | Cuts, Shaves & Beard Grooming | Blade & Timber Co.</title>
+  <meta name="description" content="Explore Blade & Timber Co. grooming packages and transparent pricing in ZAR. Precision haircuts, beard sculpting, hot towel shaves, and executive packages in Johannesburg.">
+  <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,10 +15,17 @@
     <div class="brand-container">
       <div class="logo-icon">✦</div>
       <div class="brand-text">
-        <h1>BLADE & TIMBER</h1>
+        <span class="brand-title">BLADE & TIMBER</span>
         <span>CO. — JOHANNESBURG</span>
       </div>
     </div>
+
+    <!-- Mobile Nav Toggle Hamburger Button -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
 
     <nav>
       <ul class="nav-links">
@@ -40,10 +49,18 @@
 
       <h1 class="section-title">Grooming Packages</h1>
 
+      <!-- Interactive Service Filter Bar -->
+      <div id="service-filter-bar" class="filter-bar">
+        <button type="button" class="filter-btn active" data-filter="all">All Services</button>
+        <button type="button" class="filter-btn" data-filter="haircuts">Haircuts</button>
+        <button type="button" class="filter-btn" data-filter="beards">Beards & Shaves</button>
+        <button type="button" class="filter-btn" data-filter="packages">Packages</button>
+      </div>
+
       <div class="services-grid">
         
-        <!-- Card 1 -->
-        <article class="service-card">
+        <!-- Card 1: Haircuts -->
+        <article class="service-card" data-category="haircuts">
           <div>
             <div class="service-header">
               <h2 class="service-title">Haircut & Styling</h2>
@@ -62,8 +79,28 @@
           </div>
         </article>
 
-        <!-- Card 2 -->
-        <article class="service-card">
+        <!-- Card 2: Haircuts -->
+        <article class="service-card" data-category="haircuts">
+          <div>
+            <div class="service-header">
+              <h2 class="service-title">Skin Fade & Edge-Up</h2>
+              <span class="service-price">R200</span>
+            </div>
+            <div class="service-duration">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>35 MIN</span>
+            </div>
+            <p class="service-description">
+              Zero-gap skin taper or drop fade, sharp hairline razor line-up, and invigorating cooling tonic massage.
+            </p>
+          </div>
+          <div class="service-footer">
+            <a href="enquiry.html" class="btn-select">Book Service</a>
+          </div>
+        </article>
+
+        <!-- Card 3: Beards -->
+        <article class="service-card" data-category="beards">
           <div>
             <div class="service-header">
               <h2 class="service-title">Beard Trim & Sculpt</h2>
@@ -82,8 +119,8 @@
           </div>
         </article>
 
-        <!-- Card 3 -->
-        <article class="service-card">
+        <!-- Card 4: Beards -->
+        <article class="service-card" data-category="beards">
           <div>
             <div class="service-header">
               <h2 class="service-title">Hot Towel Shave</h2>
@@ -102,8 +139,8 @@
           </div>
         </article>
 
-        <!-- Card 4 -->
-        <article class="service-card">
+        <!-- Card 5: Packages -->
+        <article class="service-card" data-category="packages">
           <div>
             <div class="service-header">
               <h2 class="service-title">The Full Executive</h2>
@@ -122,6 +159,26 @@
           </div>
         </article>
 
+        <!-- Card 6: Packages -->
+        <article class="service-card" data-category="packages">
+          <div>
+            <div class="service-header">
+              <h2 class="service-title">The Gentleman's Ritual</h2>
+              <span class="service-price">R420</span>
+            </div>
+            <div class="service-duration">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>80 MIN</span>
+            </div>
+            <p class="service-description">
+              Deluxe haircut and hot towel shave, botanical clay exfoliating facial cleanse, ear/nose grooming, and artisan styling.
+            </p>
+          </div>
+          <div class="service-footer">
+            <a href="enquiry.html" class="btn-select">Book Service</a>
+          </div>
+        </article>
+
       </div>
     </section>
   </main>
@@ -133,6 +190,8 @@
       <p>Johannesburg, South Africa</p>
     </div>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
 
