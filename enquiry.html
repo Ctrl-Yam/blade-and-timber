@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service Enquiry & Booking | Blade & Timber Co.</title>
+  <title>Service Enquiry & Booking | Rosebank & Braamfontein | Blade & Timber Co.</title>
+  <meta name="description" content="Submit a booking enquiry for precision haircutting, beard grooming, or executive treatments at Blade & Timber Co. in Rosebank or Braamfontein.">
+  <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,10 +15,17 @@
     <div class="brand-container">
       <div class="logo-icon">✦</div>
       <div class="brand-text">
-        <h1>BLADE & TIMBER</h1>
+        <span class="brand-title">BLADE & TIMBER</span>
         <span>CO. — JOHANNESBURG</span>
       </div>
     </div>
+
+    <!-- Mobile Nav Toggle Hamburger Button -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
 
     <nav>
       <ul class="nav-links">
@@ -41,12 +50,13 @@
       <h1 class="section-title">Service Enquiry</h1>
       <p style="color: var(--text-muted); margin-bottom: 2rem;">Fill out the form below to submit a custom booking request or general inquiry.</p>
 
-      <form action="#" method="get" class="enquiry-form">
+      <form action="#" method="post" class="enquiry-form" novalidate>
         
         <!-- Full Name -->
         <div class="form-group">
           <label for="fullName">Full Name *</label>
           <input type="text" id="fullName" name="fullName" placeholder="e.g. Yamkelo Vilakazi" required>
+          <span class="error-msg" id="fullName-error"></span>
         </div>
 
         <!-- Contact Email & Phone -->
@@ -54,10 +64,12 @@
           <div class="form-group">
             <label for="email">Email Address *</label>
             <input type="email" id="email" name="email" placeholder="name@example.com" required>
+            <span class="error-msg" id="email-error"></span>
           </div>
           <div class="form-group">
             <label for="phone">Phone Number *</label>
             <input type="tel" id="phone" name="phone" placeholder="082 123 4567" required>
+            <span class="error-msg" id="phone-error"></span>
           </div>
         </div>
 
@@ -70,16 +82,20 @@
               <option value="rosebank">Rosebank Precinct</option>
               <option value="braamfontein">Braamfontein Precinct</option>
             </select>
+            <span class="error-msg" id="branch-error"></span>
           </div>
           <div class="form-group">
             <label for="service">Desired Service *</label>
             <select id="service" name="service" required>
               <option value="">-- Select Package --</option>
               <option value="haircut">Haircut & Styling (R220)</option>
+              <option value="skin-fade">Skin Fade & Edge-Up (R200)</option>
               <option value="beard">Beard Trim & Sculpt (R150)</option>
               <option value="shave">Hot Towel Shave (R180)</option>
               <option value="executive">The Full Executive (R340)</option>
+              <option value="ritual">The Gentleman's Ritual (R420)</option>
             </select>
+            <span class="error-msg" id="service-error"></span>
           </div>
         </div>
 
@@ -87,6 +103,7 @@
         <div class="form-group">
           <label for="message">Additional Notes or Preferred Date</label>
           <textarea id="message" name="message" rows="4" placeholder="Let us know your preferred date/time or specific grooming requests..."></textarea>
+          <span class="error-msg" id="message-error"></span>
         </div>
 
         <!-- Submit Button -->
@@ -102,6 +119,8 @@
       <p>Johannesburg, South Africa</p>
     </div>
   </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
 
