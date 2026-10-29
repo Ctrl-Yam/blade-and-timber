@@ -11,10 +11,10 @@
  *  (Immediately Invoked Function Expressions) so that each feature
  *  has its own scope and doesn't pollute the global namespace.
  *
- *  Module 1: Lightbox Gallery       — Image overlay for homepage gallery
- *  Module 2: Form Validation & AJAX — Client-side validation + simulated submit
- *  Module 3: Mobile Navigation      — Hamburger toggle for responsive nav
- *  Module 4: Service Filter         — Category filter for services page
+ *  Module 1: Lightbox Gallery       — Interactive image modal for homepage haircut cards
+ *  Module 2: Form Validation & AJAX — Regex checks, inline errors & simulated async POST
+ *  Module 3: Mobile Navigation      — Hamburger toggle for responsive nav drawer
+ *  Module 4: Service Filter         — Dynamic category filter for service packages
  *
  *  The DOMContentLoaded event ensures the DOM is fully parsed
  *  before any querySelector calls run.
@@ -25,100 +25,135 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ========================================================================
    *  MODULE 1: Lightbox Gallery
-   *  -----------------------------------------------------------------------
-   *  Scans .gallery-card elements for image data, dynamically injects a
-   *  full-screen overlay into the DOM, and handles open / close / prev / next
-   *  via click and keyboard events.
    * ======================================================================== */
   (function initLightbox() {
 
-    var galleryCards = document.querySelectorAll('.gallery-card');
+    // ── Step 1: Collect image data from the gallery cards ──────────────
+    // We query every .gallery-card, then extract the <img> src/alt and
+    // the <h3> caption text. This builds our "slides" array.
+
+    const galleryCards = document.querySelectorAll('.gallery-card');
+
+    // If this page has no gallery cards (e.g. services.html), bail out.
     if (galleryCards.length === 0) return;
 
-    // Step 1: Build slides array from gallery card DOM elements
-    var slides = [];
+    const slides = [];
+
     galleryCards.forEach(function (card) {
-      var img = card.querySelector('img');
-      var h3  = card.querySelector('h3');
-      var p   = card.querySelector('p');
+      const img = card.querySelector('img');
+      const h3 = card.querySelector('h3');
+      const p = card.querySelector('p');
+
       if (img) {
         slides.push({
-          src:     img.getAttribute('src'),
-          alt:     img.getAttribute('alt') || '',
+          src: img.getAttribute('src'),
+          alt: img.getAttribute('alt') || '',
           caption: h3 ? h3.textContent : '',
-          desc:    p  ? p.textContent  : ''
+          desc: p ? p.textContent : ''
         });
       }
     });
+
+    // If no valid images were found, don't build the lightbox
     if (slides.length === 0) return;
 
-    // Step 2: Inject overlay markup into the DOM
-    var overlay = document.createElement('div');
+    // ── Step 2: Build the overlay DOM structure ────────────────────────
+    // We create the entire lightbox markup in JavaScript rather than
+    // hardcoding it in HTML. This is "progressive enhancement" — if JS
+    // fails to load, the page still works, just without the lightbox.
+
+    const overlay = document.createElement('div');
     overlay.className = 'lightbox-overlay';
     overlay.id = 'lightbox-overlay';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-label', 'Image gallery lightbox');
     overlay.setAttribute('aria-hidden', 'true');
-    overlay.innerHTML =
-      '<div class="lightbox-content">' +
-      '  <img class="lightbox-img" id="lightbox-img" src="" alt="" />' +
-      '  <div class="lightbox-caption">' +
-      '    <div class="lightbox-caption-title" id="lightbox-title"></div>' +
-      '    <div class="lightbox-caption-desc" id="lightbox-desc"></div>' +
-      '  </div>' +
-      '  <div class="lightbox-counter" id="lightbox-counter"></div>' +
-      '</div>' +
-      '<button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#8249;</button>' +
-      '<button class="lightbox-next" id="lightbox-next" aria-label="Next image">&#8250;</button>' +
-      '<button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>';
+
+    overlay.innerHTML = [
+      '<div class="lightbox-content">',
+      '  <img class="lightbox-img" id="lightbox-img" src="" alt="" />',
+      '  <div class="lightbox-caption">',
+      '    <div class="lightbox-caption-title" id="lightbox-title"></div>',
+      '    <div class="lightbox-caption-desc" id="lightbox-desc"></div>',
+      '  </div>',
+      '  <div class="lightbox-counter" id="lightbox-counter"></div>',
+      '</div>',
+      '<button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#8249;</button>',
+      '<button class="lightbox-next" id="lightbox-next" aria-label="Next image">&#8250;</button>',
+      '<button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>'
+    ].join('\n');
+
     document.body.appendChild(overlay);
 
-    // Step 3: Cache DOM references
-    var lightboxImg     = document.getElementById('lightbox-img');
-    var lightboxTitle   = document.getElementById('lightbox-title');
-    var lightboxDesc    = document.getElementById('lightbox-desc');
-    var lightboxCounter = document.getElementById('lightbox-counter');
-    var btnPrev         = document.getElementById('lightbox-prev');
-    var btnNext         = document.getElementById('lightbox-next');
-    var btnClose        = document.getElementById('lightbox-close');
-    var currentIndex    = 0;
+    // ── Step 3: Cache DOM references ──────────────────────────────────
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const btnPrev = document.getElementById('lightbox-prev');
+    const btnNext = document.getElementById('lightbox-next');
+    const btnClose = document.getElementById('lightbox-close');
 
-    // Step 4: Core functions
+    let currentIndex = 0;
+
+    // ── Step 4: Core functions ────────────────────────────────────────
+
+    /**
+     * showSlide(index)
+     * Updates the lightbox image, caption, and counter to reflect
+     * the slide at the given index.
+     */
     function showSlide(index) {
+      // Wrap around: if index goes below 0, loop to end; if past end, loop to 0
       if (index < 0) index = slides.length - 1;
       if (index >= slides.length) index = 0;
+
       currentIndex = index;
-      var slide = slides[currentIndex];
+
+      const slide = slides[currentIndex];
       lightboxImg.setAttribute('src', slide.src);
       lightboxImg.setAttribute('alt', slide.alt);
       lightboxTitle.textContent = slide.caption;
-      lightboxDesc.textContent  = slide.desc;
+      lightboxDesc.textContent = slide.desc;
       lightboxCounter.textContent = (currentIndex + 1) + ' / ' + slides.length;
     }
 
+    /**
+     * openLightbox(index)
+     * Displays the overlay and loads the slide at the given index.
+     * Also locks body scroll and updates ARIA attributes.
+     */
     function openLightbox(index) {
       showSlide(index);
       overlay.classList.add('lightbox-open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.classList.add('lightbox-active');
+      // Move focus to close button for accessibility
       btnClose.focus();
     }
 
+    /**
+     * closeLightbox()
+     * Hides the overlay and restores normal page scroll.
+     */
     function closeLightbox() {
       overlay.classList.remove('lightbox-open');
       overlay.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('lightbox-active');
     }
 
-    // Step 5: Event listeners
+    // ── Step 5: Wire up event listeners ───────────────────────────────
+
+    // Click on a gallery card → open lightbox at that card's index
     galleryCards.forEach(function (card, index) {
       card.addEventListener('click', function () {
         openLightbox(index);
       });
     });
 
+    // Navigation arrows
     btnPrev.addEventListener('click', function (e) {
-      e.stopPropagation();
+      e.stopPropagation(); // Don't trigger the overlay backdrop click
       showSlide(currentIndex - 1);
     });
 
@@ -127,42 +162,55 @@ document.addEventListener('DOMContentLoaded', function () {
       showSlide(currentIndex + 1);
     });
 
+    // Close button
     btnClose.addEventListener('click', function (e) {
       e.stopPropagation();
       closeLightbox();
     });
 
+    // Click on the dark backdrop (but not on the image/content) → close
     overlay.addEventListener('click', function (e) {
-      if (e.target === overlay) closeLightbox();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (!overlay.classList.contains('lightbox-open')) return;
-      switch (e.key) {
-        case 'Escape':    closeLightbox();            break;
-        case 'ArrowLeft': showSlide(currentIndex - 1); break;
-        case 'ArrowRight': showSlide(currentIndex + 1); break;
+      if (e.target === overlay) {
+        closeLightbox();
       }
     });
 
-  })();
+    // Keyboard navigation
+    document.addEventListener('keydown', function (e) {
+      // Only respond if the lightbox is currently open
+      if (!overlay.classList.contains('lightbox-open')) return;
+
+      switch (e.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case 'ArrowLeft':
+          showSlide(currentIndex - 1);
+          break;
+        case 'ArrowRight':
+          showSlide(currentIndex + 1);
+          break;
+      }
+    });
+
+  })(); // End of Lightbox IIFE
 
 
   /* ========================================================================
-   *  MODULE 2: Form Validation & AJAX Simulation
+   *  MODULE 2: Advanced Form Validation & Simulated AJAX Submission
    *  -----------------------------------------------------------------------
-   *  Targets every form with class .enquiry-form. Applies field-level
-   *  validation on blur and full-form validation on submit. On success,
-   *  simulates an asynchronous POST with a 1.5 s delay before showing
-   *  a styled success alert.
+   *  Targets every form with class .enquiry-form (enquiry.html & contact.html).
+   *  Applies field-level regex validation on blur/input, full validation
+   *  on submit, auto-scrolls to first error, and simulates an asynchronous
+   *  POST request with a loading state and an auto-dismissing alert.
    * ======================================================================== */
   (function initFormValidation() {
 
-    var forms = document.querySelectorAll('.enquiry-form');
+    const forms = document.querySelectorAll('.enquiry-form');
     if (forms.length === 0) return;
 
     // ── Validation rules keyed by input id ──
-    var rules = {
+    const rules = {
       // Enquiry form fields
       fullName: {
         required: true, minLen: 2, maxLen: 50,
@@ -209,11 +257,11 @@ document.addEventListener('DOMContentLoaded', function () {
      * Returns an error string, or '' if the field is valid.
      */
     function validateField(input) {
-      var id   = input.id;
-      var rule = rules[id];
+      const id   = input.id;
+      const rule = rules[id];
       if (!rule) return '';
 
-      var value = input.value.trim();
+      const value = input.value.trim();
 
       // Required check
       if (rule.required && value === '') {
@@ -235,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Pattern match (strip whitespace/dashes from phone numbers first)
       if (rule.pattern) {
-        var testVal = value;
+        let testVal = value;
         if (id === 'phone' || id === 'contactPhone') {
           testVal = value.replace(/[\s\-()]/g, '');
         }
@@ -252,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * Toggles inline error/valid states and populates the error span.
      */
     function showError(input, msg) {
-      var errorSpan = document.getElementById(input.id + '-error');
+      const errorSpan = document.getElementById(input.id + '-error');
       if (!errorSpan) return;
 
       if (msg) {
@@ -274,12 +322,12 @@ document.addEventListener('DOMContentLoaded', function () {
      * every field passes.
      */
     function validateForm(form) {
-      var inputs  = form.querySelectorAll('input, select, textarea');
-      var isValid = true;
+      const inputs  = form.querySelectorAll('input, select, textarea');
+      let isValid = true;
 
       inputs.forEach(function (input) {
         if (!input.id) return;
-        var error = validateField(input);
+        const error = validateField(input);
         showError(input, error);
         if (error) isValid = false;
       });
@@ -291,33 +339,33 @@ document.addEventListener('DOMContentLoaded', function () {
      * simulateAjaxSubmit(form)
      * Fakes an async form submission:
      *  1. Disables button and shows "Submitting…"
-     *  2. Waits 1.5 s (simulated network)
-     *  3. Appends a .success-alert element
+     *  2. Waits 1.5 s (simulated network request)
+     *  3. Appends a styled .success-alert element
      *  4. Resets form and clears validation states
      *  5. Auto-hides the alert after 6 s
      */
     function simulateAjaxSubmit(form) {
-      var submitBtn    = form.querySelector('button[type="submit"]');
-      var originalText = submitBtn.textContent;
+      const submitBtn    = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
 
       // ── Loading state ──
-      submitBtn.disabled    = true;
-      submitBtn.textContent = 'Submitting\u2026';
+      submitBtn.disabled      = true;
+      submitBtn.textContent   = 'Submitting\u2026';
       submitBtn.style.opacity = '0.7';
 
       setTimeout(function () {
         // Remove any previous success alert
-        var old = form.querySelector('.success-alert');
-        if (old) old.remove();
+        const oldAlert = form.querySelector('.success-alert');
+        if (oldAlert) oldAlert.remove();
 
         // Build success alert
-        var alert = document.createElement('div');
+        const alert = document.createElement('div');
         alert.className = 'success-alert';
         alert.id = 'form-success-alert';
         alert.innerHTML = '<span style="font-size:1.2rem;">&#10003;</span> Your submission has been received! We will be in touch shortly.';
         form.appendChild(alert);
 
-        // Reset form and clear states
+        // Reset form and clear validation classes
         form.reset();
         form.querySelectorAll('input, select, textarea').forEach(function (el) {
           el.classList.remove('input-valid', 'input-error');
@@ -326,9 +374,9 @@ document.addEventListener('DOMContentLoaded', function () {
           span.textContent = '';
         });
 
-        // Restore button
-        submitBtn.disabled    = false;
-        submitBtn.textContent = originalText;
+        // Restore button state
+        submitBtn.disabled      = false;
+        submitBtn.textContent   = originalText;
         submitBtn.style.opacity = '1';
 
         // Auto-hide alert after 6 seconds
@@ -349,14 +397,14 @@ document.addEventListener('DOMContentLoaded', function () {
       // Real-time validation on blur
       form.querySelectorAll('input, select, textarea').forEach(function (input) {
         input.addEventListener('blur', function () {
-          var error = validateField(input);
+          const error = validateField(input);
           showError(input, error);
         });
 
         // Clear error as user types
         input.addEventListener('input', function () {
           if (input.classList.contains('input-error')) {
-            var error = validateField(input);
+            const error = validateField(input);
             showError(input, error);
           }
         });
@@ -370,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function () {
           simulateAjaxSubmit(form);
         } else {
           // Scroll to and focus the first errored field
-          var firstError = form.querySelector('.input-error');
+          const firstError = form.querySelector('.input-error');
           if (firstError) {
             firstError.focus();
             firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -379,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-  })();
+  })(); // End of Form Validation IIFE
 
 
   /* ========================================================================
@@ -387,22 +435,22 @@ document.addEventListener('DOMContentLoaded', function () {
    *  -----------------------------------------------------------------------
    *  Listens for clicks on the #nav-toggle hamburger button and toggles
    *  the .nav-open class on the site header, which controls mobile nav
-   *  visibility via CSS max-height transition.
+   *  visibility via CSS transition.
    * ======================================================================== */
   (function initMobileNav() {
 
-    var toggleBtn = document.getElementById('nav-toggle');
-    var header    = document.querySelector('.site-header');
+    const toggleBtn = document.getElementById('nav-toggle');
+    const header    = document.querySelector('.site-header');
     if (!toggleBtn || !header) return;
 
     toggleBtn.addEventListener('click', function () {
       header.classList.toggle('nav-open');
-      var isOpen = header.classList.contains('nav-open');
+      const isOpen = header.classList.contains('nav-open');
       toggleBtn.setAttribute('aria-expanded', String(isOpen));
     });
 
-    // Close nav when a link is clicked (smooth UX on single-page navigations)
-    var navLinks = header.querySelectorAll('.nav-links a');
+    // Close nav when an anchor link is clicked
+    const navLinks = header.querySelectorAll('.nav-links a');
     navLinks.forEach(function (link) {
       link.addEventListener('click', function () {
         header.classList.remove('nav-open');
@@ -410,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-  })();
+  })(); // End of Mobile Nav IIFE
 
 
   /* ========================================================================
@@ -421,18 +469,18 @@ document.addEventListener('DOMContentLoaded', function () {
    * ======================================================================== */
   (function initServiceFilter() {
 
-    var filterBar = document.getElementById('service-filter-bar');
+    const filterBar = document.getElementById('service-filter-bar');
     if (!filterBar) return;
 
-    var filterBtns   = filterBar.querySelectorAll('.filter-btn');
-    var serviceCards  = document.querySelectorAll('.service-card[data-category]');
+    const filterBtns   = filterBar.querySelectorAll('.filter-btn');
+    const serviceCards = document.querySelectorAll('.service-card[data-category]');
     if (filterBtns.length === 0 || serviceCards.length === 0) return;
 
     filterBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var filterValue = btn.getAttribute('data-filter');
+        const filterValue = btn.getAttribute('data-filter');
 
-        // Update active button
+        // Update active button state
         filterBtns.forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
 
@@ -447,6 +495,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-  })();
+  })(); // End of Service Filter IIFE
 
 }); // End of DOMContentLoaded
