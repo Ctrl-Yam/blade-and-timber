@@ -704,7 +704,159 @@ main {
   color: var(--text-dim);
 }
 
-/* 11. Responsive =========================================================== */
+/* 11. Lightbox Gallery ===================================================== */
+
+/* Make gallery cards visually clickable */
+.gallery-card {
+  cursor: pointer;
+  transition: transform var(--slow), box-shadow var(--slow);
+}
+
+.gallery-card:hover {
+  transform: translateY(-0.3125rem);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Full-screen overlay backdrop */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox-overlay.lightbox-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Inner container holding image + caption */
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox-open .lightbox-content {
+  transform: scale(1);
+}
+
+/* The enlarged image */
+.lightbox-img {
+  max-width: 100%;
+  max-height: 72vh;
+  border-radius: var(--radius);
+  border: 2px solid var(--line-gold);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.7);
+  object-fit: contain;
+}
+
+/* Caption bar below the image */
+.lightbox-caption {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.lightbox-caption-title {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 0.25rem;
+}
+
+.lightbox-caption-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Image counter "2 / 3" */
+.lightbox-counter {
+  position: absolute;
+  bottom: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+}
+
+/* Navigation arrows */
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(201, 155, 59, 0.15);
+  border: 1px solid var(--line-gold);
+  color: var(--gold-light);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--fast);
+}
+
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(201, 155, 59, 0.3);
+  border-color: var(--gold);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Close button */
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1001;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgba(201, 155, 59, 0.15);
+  border: 1px solid var(--line-gold);
+  color: var(--gold-light);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--fast);
+}
+
+.lightbox-close:hover {
+  background: rgba(248, 113, 113, 0.2);
+  border-color: #f87171;
+  color: #f87171;
+}
+
+/* Prevent body scroll when lightbox is open */
+body.lightbox-active {
+  overflow: hidden;
+}
+
+/* 12. Responsive =========================================================== */
 @media screen and (max-width: 992px) {
   main {
     padding: 2rem 1.25rem 3rem;
@@ -749,5 +901,32 @@ main {
   .footer-container {
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  /* Lightbox mobile adjustments */
+  .lightbox-prev,
+  .lightbox-next {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .lightbox-prev { left: 0.75rem; }
+  .lightbox-next { right: 0.75rem; }
+
+  .lightbox-close {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.25rem;
+  }
+
+  .lightbox-caption-title {
+    font-size: 1rem;
+  }
+
+  .lightbox-caption-desc {
+    font-size: 0.8rem;
   }
 }
