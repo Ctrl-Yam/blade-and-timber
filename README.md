@@ -103,21 +103,41 @@ Below is visual evidence of cross-device testing conducted across Desktop, Table
 - Formatted accessibility tags, headings hierarchy, and navigation links.
 
 ### Part 2 - CSS & Responsive Design
-- Linked external CSS stylesheet (`css/styles.css` / `style.css`) across all HTML files for unified site styling.
+- Linked external CSS stylesheet (`css/styles.css`) across all HTML files for unified site styling.
 - Implemented CSS Flexbox and Grid multi-column desktop layouts for navigation menu, service cards, and footer.
 - Added media queries for mobile and tablet breakpoints to collapse multi-column layouts into a responsive single-column format.
 - Uploaded cross-device testing screenshots to the documentation under `assets/screenshots/` verifying Desktop, Tablet, and Mobile compatibility.
+
+### Part 3 - Enhancing Functionality & SEO (100 Marks)
+- **Part 2 Feedback Adjustments:**
+  - Removed all gradient fills in favor of standardized, flat gold design tokens (`var(--gold)` `#c99b3b` and `var(--gold-light)` `#f0cd7d`) ensuring strict compliance with visual constraints.
+  - Refactored header branding to `<span class="brand-title">` to ensure strict single `<h1>` semantic hierarchy per page across all 5 documents.
+  - Enhanced touch targets and keyboard focus rings for complete WCAG 2.1 AA accessibility compliance.
+- **JavaScript Interactivity Modules (`js/main.js`):**
+  - **Module 1 — Dynamic Lightbox Modal Gallery:** Extracts image metadata from `.gallery-card` elements (`1.jpg`, `barber image.jpg`, `hair dresser.jpg`), injects modal elements dynamically into the DOM, manages slide cycling with wraparound index math, locks body scrolling, and provides mouse, touch, and keyboard controls (`Escape`, `ArrowLeft`, `ArrowRight`).
+  - **Module 2 — Advanced Client-Side Regex Validation & Asynchronous AJAX Simulation:** Validates name length, email patterns, South African phone numbers (`/^(\+27|0)\d{9}$/`), branch selection, and message lengths across both `enquiry.html` and `contact.html`. Provides real-time inline error spans, auto-focuses first invalid fields, and simulates an asynchronous network submission with loading spinner/text and an auto-dismissing green success banner.
+  - **Module 3 — Mobile Navigation Drawer:** Added hamburger toggle button (`#nav-toggle`) controlling header state transitions with ARIA attributes (`aria-expanded="true/false"`) and auto-closing on link selection.
+  - **Module 4 — Dynamic Service Category Filtering:** Added multi-category tab bar on `services.html` allowing instant filtering between Haircuts, Beards & Shaves, and Executive Packages via `data-filter` and `data-category` DOM manipulation without page reload.
+- **Technical SEO & Web Crawling:**
+  - Authored a compliant `robots.txt` file guiding search engine bots and pointing to the sitemap.
+  - Built an XML `sitemap.xml` mapping all 5 core routes with `lastmod`, `changefreq`, and search engine `priority` weights.
+  - Authored unique, keyword-rich `<title>` tags and `<meta name="description">` tags for every page.
+  - Validated semantic header hierarchies (`h1` -> `h2` -> `h3`) and descriptive image `alt` attributes for screen readers and web crawlers.
 
 ---
 
 ## References
 
+- Google Developers. 2026. *Introduction to Robots.txt*. [Online] Available at: <https://developers.google.com/search/docs/crawling-indexing/robots/intro> [Accessed 18 October 2026].
+- Google Developers. 2026. *Build and Submit a Sitemap*. [Online] Available at: <https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap> [Accessed 18 October 2026].
 - Google Fonts. 2026. *Open Sans Font Family*. [Online] Available at: <https://fonts.google.com/specimen/Open+Sans> [Accessed 16 September 2026].
 - Google Fonts. 2026. *Poppins Font Family*. [Online] Available at: <https://fonts.google.com/specimen/Poppins> [Accessed 16 September 2026].
 - Marcotte, E. 2010. *Responsive Web Design*. A List Apart, No. 306. [Online] Available at: <https://alistapart.com/article/responsive-web-design/> [Accessed 16 September 2026].
-- Mozilla Developer Network (MDN). 2026. *CSS Grid Layout*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout> [Accessed 16 September 2026].
 - Mozilla Developer Network (MDN). 2026. *CSS Flexible Box Layout*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout> [Accessed 16 September 2026].
-- Mozilla Developer Network (MDN). 2026. *The Picture element*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture> [Accessed 16 September 2026].
-- Mozilla Developer Network (MDN). 2026. *Responsive images: Using srcset and sizes*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images> [Accessed 16 September 2026].
+- Mozilla Developer Network (MDN). 2026. *CSS Grid Layout*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout> [Accessed 16 September 2026].
+- Mozilla Developer Network (MDN). 2026. *Document Object Model (DOM)*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model> [Accessed 18 October 2026].
+- Mozilla Developer Network (MDN). 2026. *Regular Expressions (RegExp)*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions> [Accessed 18 October 2026].
+- Mozilla Developer Network (MDN). 2026. *Client-side form validation*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation> [Accessed 18 October 2026].
+- Mozilla Developer Network (MDN). 2026. *ARIA: dialog role*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role> [Accessed 18 October 2026].
 - The Independent Institute of Education (IIE). 2024. *The IIE Quick Reference Guide: IIE Harvard Reference Method*. Johannesburg: The Independent Institute of Education.
 - World Wide Web Consortium (W3C). 2023. *Web Content Accessibility Guidelines (WCAG) 2.1*. [Online] Available at: <https://www.w3.org/TR/WCAG21/> [Accessed 16 September 2026].
