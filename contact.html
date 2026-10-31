@@ -66,6 +66,10 @@
               <p><span>Saturday:</span> 08:00 – 17:00</p>
               <p><span>Sunday:</span> 09:00 – 14:00</p>
             </div>
+
+            <button type="button" class="btn-locate-branch" data-branch-target="rosebank" aria-controls="branch-map-section">
+              📍 View on Map
+            </button>
           </div>
         </article>
 
@@ -83,10 +87,84 @@
               <p><span>Saturday:</span> 08:00 – 17:00</p>
               <p><span>Sunday:</span> Closed</p>
             </div>
+
+            <button type="button" class="btn-locate-branch" data-branch-target="braamfontein" aria-controls="branch-map-section">
+              📍 View on Map
+            </button>
           </div>
         </article>
 
       </div>
+
+      <!-- Interactive Branch Map Section -->
+      <section class="map-section" id="branch-map-section" aria-labelledby="map-heading">
+        <div class="subtitle-container">
+          <div class="subtitle-line"></div>
+          <span class="subtitle-text">Interactive Map</span>
+        </div>
+
+        <h2 id="map-heading" class="map-section-title">Explore Our Locations</h2>
+        <p class="map-intro">Select a branch below to view its physical location and get navigation directions.</p>
+
+        <!-- Branch Selector Tabs -->
+        <div class="map-tab-container" role="tablist" aria-label="Branch map selector">
+          <button type="button" class="map-tab-btn active" role="tab" id="tab-rosebank" aria-selected="true" aria-controls="map-panel-rosebank" data-branch="rosebank">
+            <span class="tab-marker">✦</span> Rosebank
+          </button>
+          <button type="button" class="map-tab-btn" role="tab" id="tab-braamfontein" aria-selected="false" aria-controls="map-panel-braamfontein" data-branch="braamfontein">
+            <span class="tab-marker">✦</span> Braamfontein
+          </button>
+        </div>
+
+        <!-- Map Container Card -->
+        <div class="map-wrapper-card">
+          <!-- Rosebank Map Panel -->
+          <div class="map-panel active" id="map-panel-rosebank" role="tabpanel" aria-labelledby="tab-rosebank">
+            <div class="map-iframe-container">
+              <iframe
+                title="Google Maps — Blade &amp; Timber Co. Rosebank on Oxford Road"
+                src="https://maps.google.com/maps?q=Oxford+Road,+Rosebank,+Johannesburg&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="map-card-footer">
+              <div class="map-footer-details">
+                <span class="map-footer-badge">Rosebank</span>
+                <p class="map-footer-address">Oxford Road, Rosebank &bull; +27 (0)11 555 0192</p>
+                <p class="map-footer-hours">Mon–Fri 08:00–19:00 | Sat 08:00–17:00 | Sun 09:00–14:00</p>
+              </div>
+              <a href="https://maps.google.com/?q=Oxford+Road,+Rosebank,+Johannesburg" target="_blank" rel="noopener noreferrer" class="btn-directions">
+                Get Directions &#8599;
+              </a>
+            </div>
+          </div>
+
+          <!-- Braamfontein Map Panel -->
+          <div class="map-panel" id="map-panel-braamfontein" role="tabpanel" aria-labelledby="tab-braamfontein" hidden>
+            <div class="map-iframe-container">
+              <iframe
+                title="Google Maps — Blade &amp; Timber Co. Braamfontein on Juta Street"
+                src="https://maps.google.com/maps?q=Juta+Street,+Braamfontein,+Johannesburg&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="map-card-footer">
+              <div class="map-footer-details">
+                <span class="map-footer-badge">Braamfontein</span>
+                <p class="map-footer-address">Juta Street, Braamfontein &bull; +27 (0)11 555 0144</p>
+                <p class="map-footer-hours">Mon–Fri 08:00–19:00 | Sat 08:00–17:00 | Sun Closed</p>
+              </div>
+              <a href="https://maps.google.com/?q=Juta+Street,+Braamfontein,+Johannesburg" target="_blank" rel="noopener noreferrer" class="btn-directions">
+                Get Directions &#8599;
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Contact Message Form Section -->
       <section class="form-section" style="margin-top: 3.5rem;">

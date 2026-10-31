@@ -378,4 +378,55 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 
+  // MODULE 5: Interactive Branch Map Tab Switcher
+  (function initBranchMap() {
+    var tabContainer = document.querySelector('.map-tab-container');
+    if (!tabContainer) return;
+
+    var tabBtns = tabContainer.querySelectorAll('.map-tab-btn');
+    var mapPanels = document.querySelectorAll('.map-panel');
+    if (tabBtns.length === 0 || mapPanels.length === 0) return;
+
+    // Switch visible map panel when a tab is clicked
+    function activateBranch(branchKey) {
+      tabBtns.forEach(function (btn) {
+        var isMatch = btn.getAttribute('data-branch') === branchKey;
+        btn.classList.toggle('active', isMatch);
+        btn.setAttribute('aria-selected', String(isMatch));
+      });
+
+      mapPanels.forEach(function (panel) {
+        var isTarget = panel.id === 'map-panel-' + branchKey;
+        panel.classList.toggle('active', isTarget);
+        if (isTarget) {
+          panel.removeAttribute('hidden');
+        } else {
+          panel.setAttribute('hidden', '');
+        }
+      });
+    }
+
+    // Tab button click listeners
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var branch = btn.getAttribute('data-branch');
+        activateBranch(branch);
+      });
+    });
+
+    // "View on Map" buttons inside branch cards scroll to map and activate the correct tab
+    var locateBtns = document.querySelectorAll('.btn-locate-branch');
+    locateBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = btn.getAttribute('data-branch-target');
+        activateBranch(target);
+
+        var mapSection = document.getElementById('branch-map-section');
+        if (mapSection) {
+          mapSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+
 });

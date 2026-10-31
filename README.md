@@ -33,7 +33,7 @@ Blade & Timber Co.
 ├── About Us (about.html)             # Brand story, core artisan values, and master barber roster
 ├── Services & Pricing (services.html)# Full service menu cards with pricing, duration, and booking triggers
 ├── Service Enquiry (enquiry.html)    # Multi-field booking request and customer inquiry form
-└── Contact & Locations (contact.html)# Physical branch cards, operating hours, and location specifics
+└── Contact & Locations (contact.html)# Branch cards, operating hours, interactive Google Maps embed, and contact form
 ```
 
 ---
@@ -41,7 +41,7 @@ Blade & Timber Co.
 ## Project Milestones & Timeline
 - **Phase 1 (Part 1):** Research, information architecture, semantic HTML5 skeleton, initial repository setup, and GitHub Pages deployment.
 - **Phase 2 (Part 2):** Master CSS stylesheet (`style.css`), typography scale with relative units (`rem`, `em`, `%`), CSS Flexbox and Grid multi-column desktop layouts, interactive pseudo-classes (`:hover`, `:focus`, `:active`), responsive media queries (tablet and mobile), and responsive image strategy (`<picture>`, `srcset`, `sizes`).
-- **Phase 3 (Part 3):** Client-side JavaScript functionality, DOM manipulation, dynamic booking calculations, and advanced form validation.
+- **Phase 3 (Part 3):** Client-side JavaScript functionality, DOM manipulation, dynamic booking calculations, advanced form validation, interactive embedded Google Maps, and SEO configuration.
 
 ---
 
@@ -118,6 +118,7 @@ Below is visual evidence of cross-device testing conducted across Desktop, Table
   - **Module 2 — Advanced Client-Side Regex Validation & Asynchronous AJAX Simulation:** Validates name length, email patterns, South African phone numbers (`/^(\+27|0)\d{9}$/`), branch selection, and message lengths across both `enquiry.html` and `contact.html`. Provides real-time inline error spans, auto-focuses first invalid fields, and simulates an asynchronous network submission with loading spinner/text and an auto-dismissing green success banner.
   - **Module 3 — Mobile Navigation Drawer:** Added hamburger toggle button (`#nav-toggle`) controlling header state transitions with ARIA attributes (`aria-expanded="true/false"`) and auto-closing on link selection.
   - **Module 4 — Dynamic Service Category Filtering:** Added multi-category tab bar on `services.html` allowing instant filtering between Haircuts, Beards & Shaves, and Executive Packages via `data-filter` and `data-category` DOM manipulation without page reload.
+  - **Module 5 — Interactive Branch Map with Tab Switcher:** Embedded responsive Google Maps `<iframe>` panels on `contact.html` displaying both Rosebank (Oxford Road) and Braamfontein (Juta Street) branch locations. Built a tabbed UI (`role="tablist"`, `role="tab"`, `role="tabpanel"`) allowing users to switch between branch maps without page reload. "View on Map" buttons inside each branch card trigger smooth-scroll navigation to the map section and auto-activate the corresponding tab panel via `data-branch-target` attributes. Each map panel includes a footer info bar with a badge, contact details, operating hours, and an external "Get Directions" link opening Google Maps navigation. Fully responsive — tabs stack vertically and iframe aspect ratio adjusts on mobile (≤ 640px). Styled with flat `var(--gold)` borders and `var(--card)` backgrounds matching the existing dark charcoal design system with no gradients.
 - **Technical SEO & Web Crawling:**
   - Authored a compliant `robots.txt` file guiding search engine bots and pointing to the sitemap.
   - Built an XML `sitemap.xml` mapping all 5 core routes with `lastmod`, `changefreq`, and search engine `priority` weights.
@@ -130,6 +131,7 @@ Below is visual evidence of cross-device testing conducted across Desktop, Table
 
 - Google Developers. 2026. *Introduction to Robots.txt*. [Online] Available at: <https://developers.google.com/search/docs/crawling-indexing/robots/intro> [Accessed 18 October 2026].
 - Google Developers. 2026. *Build and Submit a Sitemap*. [Online] Available at: <https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap> [Accessed 18 October 2026].
+- Google Developers. 2026. *Embed a Map or Directions*. [Online] Available at: <https://developers.google.com/maps/documentation/embed/get-started> [Accessed 30 October 2026].
 - Google Fonts. 2026. *Open Sans Font Family*. [Online] Available at: <https://fonts.google.com/specimen/Open+Sans> [Accessed 16 September 2026].
 - Google Fonts. 2026. *Poppins Font Family*. [Online] Available at: <https://fonts.google.com/specimen/Poppins> [Accessed 16 September 2026].
 - Marcotte, E. 2010. *Responsive Web Design*. A List Apart, No. 306. [Online] Available at: <https://alistapart.com/article/responsive-web-design/> [Accessed 16 September 2026].
@@ -139,5 +141,6 @@ Below is visual evidence of cross-device testing conducted across Desktop, Table
 - Mozilla Developer Network (MDN). 2026. *Regular Expressions (RegExp)*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions> [Accessed 18 October 2026].
 - Mozilla Developer Network (MDN). 2026. *Client-side form validation*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation> [Accessed 18 October 2026].
 - Mozilla Developer Network (MDN). 2026. *ARIA: dialog role*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role> [Accessed 18 October 2026].
+- Mozilla Developer Network (MDN). 2026. *ARIA: tab role*. [Online] Available at: <https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role> [Accessed 30 October 2026].
 - The Independent Institute of Education (IIE). 2024. *The IIE Quick Reference Guide: IIE Harvard Reference Method*. Johannesburg: The Independent Institute of Education.
 - World Wide Web Consortium (W3C). 2023. *Web Content Accessibility Guidelines (WCAG) 2.1*. [Online] Available at: <https://www.w3.org/TR/WCAG21/> [Accessed 16 September 2026].
