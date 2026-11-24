@@ -1,7 +1,7 @@
 # Blade & Timber Co. — Website Development
 
 ## Student Information
-- **Full Name:** Yamkelo Paballo Vilakazi
+- **Full Name:** Yamkelo Vilakazi
 
 ---
 
