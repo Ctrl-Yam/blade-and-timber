@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Locations | Rosebank & Braamfontein Branches | Blade & Timber Co.</title>
+  <meta name="description" content="Find Blade & Timber Co. barbershop branches on Oxford Road, Rosebank and Juta Street, Braamfontein. View operating hours, phone numbers, and send inquiries.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="site-header">
+    <div class="brand-container">
+      <div class="logo-icon">✦</div>
+      <div class="brand-text">
+        <span class="brand-title">BLADE & TIMBER</span>
+        <span>CO. — JOHANNESBURG</span>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Toggle Hamburger Button -->
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="enquiry.html">Enquiry</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="enquiry.html" class="btn-book">Book Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="contact-section">
+      <div class="subtitle-container">
+        <div class="subtitle-line"></div>
+        <span class="subtitle-text">Find Us</span>
+      </div>
+
+      <h1 class="section-title">Locations & Contact</h1>
+
+      <!-- Dual Branch Grid -->
+      <div class="branches-grid">
+        
+        <!-- Branch 1: Rosebank -->
+        <article class="branch-card">
+          <div class="branch-info">
+            <h2 class="branch-title">Rosebank Precinct</h2>
+            <p class="branch-address">Oxford Road, Rosebank, Johannesburg</p>
+            <p class="branch-detail">+27 (0)11 555 0192</p>
+            <p class="branch-detail">rosebank@bladeandtimber.co.za</p>
+            
+            <div class="hours-box">
+              <h3>Operating Hours</h3>
+              <p><span>Mon - Fri:</span> 08:00 – 19:00</p>
+              <p><span>Saturday:</span> 08:00 – 17:00</p>
+              <p><span>Sunday:</span> 09:00 – 14:00</p>
+            </div>
+
+            <button type="button" class="btn-locate-branch" data-branch-target="rosebank" aria-controls="branch-map-section">
+              📍 View on Map
+            </button>
+          </div>
+        </article>
+
+        <!-- Branch 2: Braamfontein -->
+        <article class="branch-card">
+          <div class="branch-info">
+            <h2 class="branch-title">Braamfontein Precinct</h2>
+            <p class="branch-address">Juta Street, Braamfontein, Johannesburg</p>
+            <p class="branch-detail">+27 (0)11 555 0144</p>
+            <p class="branch-detail">braam@bladeandtimber.co.za</p>
+            
+            <div class="hours-box">
+              <h3>Operating Hours</h3>
+              <p><span>Mon - Fri:</span> 08:00 – 19:00</p>
+              <p><span>Saturday:</span> 08:00 – 17:00</p>
+              <p><span>Sunday:</span> Closed</p>
+            </div>
+
+            <button type="button" class="btn-locate-branch" data-branch-target="braamfontein" aria-controls="branch-map-section">
+              📍 View on Map
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Interactive Branch Map Section -->
+      <section class="map-section" id="branch-map-section" aria-labelledby="map-heading">
+        <div class="subtitle-container">
+          <div class="subtitle-line"></div>
+          <span class="subtitle-text">Interactive Map</span>
+        </div>
+
+        <h2 id="map-heading" class="map-section-title">Explore Our Locations</h2>
+        <p class="map-intro">Select a branch below to view its physical location and get navigation directions.</p>
+
+        <!-- Branch Selector Tabs -->
+        <div class="map-tab-container" role="tablist" aria-label="Branch map selector">
+          <button type="button" class="map-tab-btn active" role="tab" id="tab-rosebank" aria-selected="true" aria-controls="map-panel-rosebank" data-branch="rosebank">
+            <span class="tab-marker">✦</span> Rosebank
+          </button>
+          <button type="button" class="map-tab-btn" role="tab" id="tab-braamfontein" aria-selected="false" aria-controls="map-panel-braamfontein" data-branch="braamfontein">
+            <span class="tab-marker">✦</span> Braamfontein
+          </button>
+        </div>
+
+        <!-- Map Container Card -->
+        <div class="map-wrapper-card">
+          <!-- Rosebank Map Panel -->
+          <div class="map-panel active" id="map-panel-rosebank" role="tabpanel" aria-labelledby="tab-rosebank">
+            <div class="map-iframe-container">
+              <iframe
+                title="Google Maps — Blade &amp; Timber Co. Rosebank on Oxford Road"
+                src="https://maps.google.com/maps?q=Oxford+Road,+Rosebank,+Johannesburg&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="map-card-footer">
+              <div class="map-footer-details">
+                <span class="map-footer-badge">Rosebank</span>
+                <p class="map-footer-address">Oxford Road, Rosebank &bull; +27 (0)11 555 0192</p>
+                <p class="map-footer-hours">Mon–Fri 08:00–19:00 | Sat 08:00–17:00 | Sun 09:00–14:00</p>
+              </div>
+              <a href="https://maps.google.com/?q=Oxford+Road,+Rosebank,+Johannesburg" target="_blank" rel="noopener noreferrer" class="btn-directions">
+                Get Directions &#8599;
+              </a>
+            </div>
+          </div>
+
+          <!-- Braamfontein Map Panel -->
+          <div class="map-panel" id="map-panel-braamfontein" role="tabpanel" aria-labelledby="tab-braamfontein" hidden>
+            <div class="map-iframe-container">
+              <iframe
+                title="Google Maps — Blade &amp; Timber Co. Braamfontein on Juta Street"
+                src="https://maps.google.com/maps?q=Juta+Street,+Braamfontein,+Johannesburg&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="map-card-footer">
+              <div class="map-footer-details">
+                <span class="map-footer-badge">Braamfontein</span>
+                <p class="map-footer-address">Juta Street, Braamfontein &bull; +27 (0)11 555 0144</p>
+                <p class="map-footer-hours">Mon–Fri 08:00–19:00 | Sat 08:00–17:00 | Sun Closed</p>
+              </div>
+              <a href="https://maps.google.com/?q=Juta+Street,+Braamfontein,+Johannesburg" target="_blank" rel="noopener noreferrer" class="btn-directions">
+                Get Directions &#8599;
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Message Form Section -->
+      <section class="form-section" style="margin-top: 3.5rem;">
+        <div class="subtitle-container">
+          <div class="subtitle-line"></div>
+          <span class="subtitle-text">Get In Touch</span>
+        </div>
+
+        <h2 style="font-size: 1.75rem; color: var(--text); margin-bottom: 0.5rem; font-family: var(--font-head);">Direct Inquiries</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Have a question about group bookings, corporate grooming packages, or special requests? Drop our management team a note below.</p>
+
+        <form action="#" method="post" class="enquiry-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName">Your Name *</label>
+              <input type="text" id="contactName" name="contactName" placeholder="e.g. Sipho Nkosi" required>
+              <span class="error-msg" id="contactName-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" name="contactEmail" placeholder="name@example.com" required>
+              <span class="error-msg" id="contactEmail-error"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactPhone">Phone Number (Optional)</label>
+              <input type="tel" id="contactPhone" name="contactPhone" placeholder="082 123 4567">
+              <span class="error-msg" id="contactPhone-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject *</label>
+              <input type="text" id="contactSubject" name="contactSubject" placeholder="e.g. Corporate Grooming Inquiry" required>
+              <span class="error-msg" id="contactSubject-error"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage">Message *</label>
+            <textarea id="contactMessage" name="contactMessage" rows="4" placeholder="How can our barbering team assist you?" required></textarea>
+            <span class="error-msg" id="contactMessage-error"></span>
+          </div>
+
+          <button type="submit" class="btn-book" style="width: 100%; text-align: center; margin-top: 1rem;">Send Message</button>
+        </form>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>&copy; 2026 Blade & Timber Co. All rights reserved.</p>
+      <p>Johannesburg, South Africa</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
+<!-- made by Yamkelo -->
